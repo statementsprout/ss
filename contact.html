@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Statement Sprout · Contact</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:#F5F8F0;font-family:'Jost',sans-serif;font-weight:300;color:#2C4A1E;min-height:100vh}
+
+  /* ── NAV ── */
+  nav{position:sticky;top:0;z-index:100;background:#2C4A1E;height:60px;display:flex;align-items:center;justify-content:space-between;padding:0 40px;box-shadow:0 2px 20px rgba(44,74,30,.25)}
+  .nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+  .nav-brand{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:600;color:#EAF3DE;letter-spacing:.02em}
+  .nav-brand em{font-style:italic;color:#97C459}
+  .nav-links{display:flex;gap:4px}
+  .nav-link{color:rgba(192,221,151,.7);text-decoration:none;font-size:12px;font-weight:400;letter-spacing:.1em;text-transform:uppercase;padding:8px 16px;border-radius:4px;transition:all .2s}
+  .nav-link:hover{color:#EAF3DE;background:rgba(151,196,89,.12)}
+  .nav-link.active{color:#EAF3DE;background:rgba(151,196,89,.18)}
+  .nav-cta{background:#97C459;color:#2C4A1E;text-decoration:none;font-size:11px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;padding:9px 20px;border-radius:3px;transition:background .2s}
+  .nav-cta:hover{background:#C0DD97}
+
+  /* ── PAGE HEADER ── */
+  .page-header{background:#2C4A1E;padding:60px 40px 56px;position:relative;overflow:hidden}
+  .page-header::before{content:'';position:absolute;width:360px;height:360px;border-radius:50%;border:1px solid rgba(151,196,89,.1);top:-120px;right:-60px}
+  .page-header-inner{max-width:900px;margin:0 auto;position:relative;z-index:1}
+  .page-eyebrow{font-size:10px;font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:#97C459;margin-bottom:14px}
+  .page-title{font-family:'Cormorant Garamond',serif;font-size:52px;font-weight:300;color:#EAF3DE;line-height:1.08;letter-spacing:-.5px}
+  .page-title em{font-style:italic;color:#97C459}
+  .page-sub{font-size:14.5px;color:rgba(234,243,222,.7);margin-top:14px;max-width:500px;line-height:1.75}
+
+  /* ── MAIN CONTENT ── */
+  .main{padding:64px 40px}
+  .main-inner{max-width:900px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start}
+  @media(max-width:680px){.main-inner{grid-template-columns:1fr}}
+
+  /* ── CONTACT INFO ── */
+  .contact-info h2{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:600;color:#2C4A1E;margin-bottom:8px}
+  .contact-info .sub{font-size:14px;color:#7A6E5A;line-height:1.75;margin-bottom:36px}
+
+  .contact-item{display:flex;align-items:flex-start;gap:14px;margin-bottom:24px}
+  .contact-icon{width:42px;height:42px;border-radius:10px;background:rgba(99,153,34,.12);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;margin-top:2px}
+  .contact-label{font-size:10.5px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:#97C459;margin-bottom:4px}
+  .contact-value{font-size:14.5px;color:#2C4A1E;font-weight:400}
+  .contact-value a{color:#3B6D11;text-decoration:none;border-bottom:1px solid rgba(59,109,17,.25);transition:border-color .2s}
+  .contact-value a:hover{border-color:#3B6D11}
+  .contact-note{font-size:12px;color:#97C459;margin-top:2px}
+
+  /* season note */
+  .season-note{background:linear-gradient(135deg,#2C4A1E,#3B6D11);border-radius:12px;padding:24px;margin-top:32px}
+  .season-note-title{font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:600;color:#EAF3DE;margin-bottom:8px}
+  .season-note-body{font-size:13px;color:rgba(234,243,222,.75);line-height:1.7}
+  .season-list{margin-top:10px;display:flex;flex-direction:column;gap:6px}
+  .season-row{display:flex;gap:10px;font-size:12.5px}
+  .season-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;margin-top:4px}
+  .season-text{color:rgba(234,243,222,.8)}
+  .season-month{color:#97C459;font-weight:500;min-width:80px}
+
+  /* ── CONTACT FORM ── */
+  .contact-form{background:#fff;border:1px solid rgba(99,153,34,.18);border-radius:16px;padding:32px}
+  .form-title{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:600;color:#2C4A1E;margin-bottom:6px}
+  .form-sub{font-size:13px;color:#7A6E5A;margin-bottom:24px;line-height:1.6}
+  .form-group{margin-bottom:18px}
+  .form-group label{display:block;font-size:10.5px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:#639922;margin-bottom:6px}
+  .form-group input,.form-group select,.form-group textarea{width:100%;padding:11px 14px;border:1px solid rgba(99,153,34,.25);border-radius:8px;font-family:'Jost',sans-serif;font-size:13.5px;font-weight:300;color:#2C4A1E;background:#FAFDF6;transition:border-color .2s;appearance:none}
+  .form-group input:focus,.form-group select:focus,.form-group textarea:focus{outline:none;border-color:#97C459;background:#fff}
+  .form-group textarea{min-height:110px;resize:vertical}
+  .form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  @media(max-width:400px){.form-row{grid-template-columns:1fr}}
+  .form-submit{width:100%;padding:14px;background:#2C4A1E;color:#EAF3DE;border:none;border-radius:6px;font-family:'Jost',sans-serif;font-size:12px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;cursor:pointer;transition:background .2s;margin-top:6px}
+  .form-submit:hover{background:#3B6D11}
+  .form-note{font-size:11.5px;color:#97C459;text-align:center;margin-top:10px}
+  .success-msg{display:none;background:#EAF3DE;border:1px solid rgba(99,153,34,.3);border-radius:8px;padding:16px;text-align:center;font-size:13.5px;color:#2C4A1E;margin-top:14px}
+  .success-msg.show{display:block}
+
+  /* ── FAQ ── */
+  .faq-section{padding:0 40px 64px}
+  .faq-inner{max-width:900px;margin:0 auto}
+  .sec-head{display:flex;align-items:center;gap:16px;margin-bottom:32px}
+  .sec-line{flex:1;height:1px;background:rgba(59,109,17,.2)}
+  .sec-label{font-size:10px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:#639922;white-space:nowrap}
+  .faq-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  @media(max-width:640px){.faq-grid{grid-template-columns:1fr}}
+  .faq-item{padding:20px 22px;border:1px solid rgba(99,153,34,.15);border-radius:10px;background:#fff}
+  .faq-q{font-family:'Cormorant Garamond',serif;font-size:17px;font-weight:600;color:#2C4A1E;margin-bottom:8px}
+  .faq-a{font-size:13px;color:#7A6E5A;line-height:1.7}
+
+  /* ── FOOTER ── */
+  footer{background:#1a2e0e;padding:32px 40px;text-align:center}
+  .footer-inner{max-width:900px;margin:0 auto}
+  .footer-brand{font-family:'Cormorant Garamond',serif;font-size:17px;font-style:italic;color:#3B6D11;margin-bottom:10px}
+  .footer-links{font-size:12px;color:#639922;margin-bottom:10px}
+  .footer-fine{font-size:11px;color:#3d4a35;line-height:1.7}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="index.html">
+    <svg width="20" height="24" viewBox="0 0 52 62" fill="none"><path d="M26 58C26 30 26 18 26 18" stroke="#97C459" stroke-width="2.5" stroke-linecap="round"/><path d="M26 36C20 28 8 28 10 18C18 16 26 24 26 36Z" fill="#97C459" opacity=".9"/><path d="M26 26C32 18 44 16 42 8C34 6 26 14 26 26Z" fill="#C0DD97"/><path d="M26 18C24 12 20 8 22 4C25 3 28 8 26 18Z" fill="#EAF3DE"/></svg>
+    <span class="nav-brand">Statement <em>Sprout</em></span>
+  </a>
+  <div class="nav-links">
+    <a class="nav-link" href="index.html">Home</a>
+    <a class="nav-link" href="pricing.html">Services</a>
+    <a class="nav-link active" href="contact.html">Contact</a>
+  </div>
+  <a class="nav-cta" href="#form">Book a call</a>
+</nav>
+
+<!-- PAGE HEADER -->
+<div class="page-header">
+  <div class="page-header-inner">
+    <div class="page-eyebrow">Let's talk</div>
+    <div class="page-title">Get in <em>touch</em></div>
+    <div class="page-sub">Ready to get started or just have questions? Morgann would love to hear from you.</div>
+  </div>
+</div>
+
+<!-- MAIN -->
+<div class="main">
+  <div class="main-inner">
+
+    <!-- LEFT: CONTACT INFO -->
+    <div class="contact-info">
+      <h2>Contact Morgann</h2>
+      <div class="sub">The best way to get started is to fill out the intake form or reach out directly. Morgann typically responds within 24 hours.</div>
+
+      <div class="contact-item">
+        <div class="contact-icon">✉️</div>
+        <div>
+          <div class="contact-label">Email</div>
+          <div class="contact-value"><a href="mailto:morgann@statementsprout.com">morgann@statementsprout.com</a></div>
+          <div class="contact-note">Best for general questions & existing clients</div>
+        </div>
+      </div>
+
+      <div class="contact-item">
+        <div class="contact-icon">📅</div>
+        <div>
+          <div class="contact-label">Book a call</div>
+          <div class="contact-value"><a href="#form">Fill out the intake form</a> to get started</div>
+          <div class="contact-note">Morgann will reach out to schedule your first session</div>
+        </div>
+      </div>
+
+      <div class="contact-item">
+        <div class="contact-icon">📍</div>
+        <div>
+          <div class="contact-label">Location</div>
+          <div class="contact-value">Phoenix, Arizona</div>
+          <div class="contact-note">All sessions conducted virtually via Zoom or Google Meet</div>
+        </div>
+      </div>
+
+      <div class="contact-item">
+        <div class="contact-icon">⏱</div>
+        <div>
+          <div class="contact-label">Response time</div>
+          <div class="contact-value">Within 24 hours</div>
+          <div class="contact-note">Monday – Friday</div>
+        </div>
+      </div>
+
+      <!-- Peak seasons -->
+      <div class="season-note">
+        <div class="season-note-title">When to reach out</div>
+        <div class="season-note-body">Application season fills up fast. Here's when demand is highest:</div>
+        <div class="season-list">
+          <div class="season-row"><div class="season-dot" style="background:#E85D24"></div><span class="season-month">Sept – Dec</span><span class="season-text">Law school rush — book early</span></div>
+          <div class="season-row"><div class="season-dot" style="background:#BA7517"></div><span class="season-month">Oct – Jan</span><span class="season-text">Grad school deadlines</span></div>
+          <div class="season-row"><div class="season-dot" style="background:#97C459"></div><span class="season-month">Mar – May</span><span class="season-text">Internship resume prep</span></div>
+          <div class="season-row"><div class="season-dot" style="background:#C0DD97"></div><span class="season-month">June – Aug</span><span class="season-text">Early-bird applicants</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- RIGHT: FORM -->
+    <div class="contact-form" id="form">
+      <div class="form-title">Start your application journey</div>
+      <div class="form-sub">Fill out this quick intake form and Morgann will be in touch within 24 hours to discuss next steps.</div>
+
+      <div class="form-row">
+        <div class="form-group"><label>First name</label><input type="text" placeholder="Your first name"></div>
+        <div class="form-group"><label>Last name</label><input type="text" placeholder="Your last name"></div>
+      </div>
+      <div class="form-group"><label>Email address</label><input type="email" placeholder="your@email.com"></div>
+      <div class="form-group">
+        <label>What are you applying to?</label>
+        <select>
+          <option value="" disabled selected>Select a program type</option>
+          <option>Law school (JD)</option>
+          <option>MBA program</option>
+          <option>Graduate program (MA/MS/PhD)</option>
+          <option>MPH / MSW / MPA</option>
+          <option>Undergraduate transfer</option>
+          <option>Other professional degree</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Service you're interested in</label>
+        <select>
+          <option value="" disabled selected>Select a service or package</option>
+          <option>Not sure yet — help me decide</option>
+          <option>Concepts & Planning Call ($125)</option>
+          <option>Big-Picture Editing</option>
+          <option>Line-by-Line Editing</option>
+          <option>Resume Editing & Reformatting ($150)</option>
+          <option>It's Nothing Personal package ($595)</option>
+          <option>Soon-to-be JD package ($875)</option>
+          <option>All In package ($1,200)</option>
+        </select>
+      </div>
+      <div class="form-group"><label>Application deadline</label><input type="text" placeholder="e.g. December 1, 2025"></div>
+      <div class="form-group"><label>Anything else Morgann should know?</label><textarea placeholder="Tell us about your background, your target schools, or any questions you have..."></textarea></div>
+      <button class="form-submit" onclick="submitForm()">Send my intake form</button>
+      <div class="form-note">Morgann will respond within 24 hours · No commitment required</div>
+      <div class="success-msg" id="success">🌱 Thank you! Morgann will be in touch within 24 hours.</div>
+    </div>
+
+  </div>
+</div>
+
+<!-- FAQ -->
+<div class="faq-section">
+  <div class="faq-inner">
+    <div class="sec-head"><div class="sec-line"></div><div class="sec-label">Common questions</div><div class="sec-line"></div></div>
+    <div class="faq-grid">
+      <div class="faq-item">
+        <div class="faq-q">How do sessions work?</div>
+        <div class="faq-a">All sessions are conducted virtually via Zoom or Google Meet. You'll share documents via Google Drive and receive edits as tracked changes with detailed comments.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">How far in advance should I reach out?</div>
+        <div class="faq-a">Ideally 6–8 weeks before your application deadline. During peak season (Sept–Dec) spots fill quickly, so the earlier the better.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">What if I'm not sure which service I need?</div>
+        <div class="faq-a">That's what the planning call is for! Select "Not sure yet" in the form and Morgann will help you figure out the best approach for your timeline and goals.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Do you work with all types of programs?</div>
+        <div class="faq-a">Yes — law school, MBA, MPH, MSW, MPA, graduate programs, and more. If you're writing a personal statement or need a resume, Morgann can help.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">How does payment work?</div>
+        <div class="faq-a">Payment is due before services begin. Morgann accepts Venmo, PayPal, and Zelle. Packages can be discussed on a case-by-case basis.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Can I add services after I've started?</div>
+        <div class="faq-a">Absolutely. Additional editing rounds can be added to any package at $85/round, and individual services can be added as needed.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">Statement Sprout</div>
+    <div class="footer-links">statementsprout.com &nbsp;·&nbsp; morgann@statementsprout.com</div>
+    <div class="footer-fine">© 2026 Statement Sprout · Morgann Kelly · All rights reserved</div>
+  </div>
+</footer>
+
+<script>
+function submitForm() {
+  document.getElementById('success').classList.add('show');
+  document.querySelector('.form-submit').textContent = '✓ Sent!';
+  document.querySelector('.form-submit').style.background = '#639922';
+}
+</script>
+
+</body>
+</html>
